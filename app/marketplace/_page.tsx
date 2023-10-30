@@ -72,7 +72,10 @@ const MarketPlaceRouter = ({
         <div className="w-[95%] md:w-[90%] xl:w-[85%] 2xl:w-[80%] m-auto">
           <div>
             <div className="w-full">
-              <FilterPrompt />
+              <FilterPrompt
+                setPrompts={setPrompts}
+                totalPrompts={totalPrompts}
+              />
             </div>
             <div className="w-full flex flex-wrap mt-5">
               {loading ? (

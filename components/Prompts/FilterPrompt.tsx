@@ -5,8 +5,23 @@ import { useState } from "react";
 
 const categories = ["All", "Chatgpt", "Midjourney", "Bard", "Dalle"];
 
-const FilterPrompt = () => {
+type Props = {
+  totalPrompts: any;
+  setPrompts: (prompts: any) => void;
+};
+
+const FilterPrompt = ({ totalPrompts, setPrompts }: Props) => {
   const [selected, setSelected] = useState("All");
+
+  const handleFilter = (e: any) => {
+    setSelected(e);
+    if (e === "All") {
+      setPrompts(totalPrompts);
+    } else {
+      const data = totalPrompts?.filter((prompt: any) => prompt.category === e);
+      setPrompts(data);
+    }
+  };
 
   return (
     <div className="w-full flex rounded shadow my-5">
@@ -16,7 +31,7 @@ const FilterPrompt = () => {
             selected === i ? "bg-[#3ab05b]" : "bg-[#2251ac]"
           }`}
           key={index}
-          onClick={(e) => setSelected(i)}
+          onClick={(e) => handleFilter(i)}
         >
           <p className={`${styles.paragraph} text-white`}>{i}</p>
         </Button>

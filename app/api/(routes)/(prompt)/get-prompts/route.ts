@@ -26,6 +26,15 @@ export async function GET(req: NextRequest) {
       },
     });
 
+    const totalPrompts: any = await prisma.prompts.findMany({
+      where: {
+        status: "Live",
+      },
+      include: {
+        images: true,
+      },
+    });
+
     if (prompts) {
       for (const prompt of prompts) {
         const shop = await prisma.shops.findUnique({
@@ -35,13 +44,16 @@ export async function GET(req: NextRequest) {
         });
         prompt.shop = shop;
       }
-    }
 
-    const totalPrompts = await prisma.prompts.findMany({
-      where: {
-        status: "Live",
-      },
-    });
+      for (const prompt of totalPrompts) {
+        const shop = await prisma.shops.findUnique({
+          where: {
+            userId: prompt.sellerId,
+          },
+        });
+        prompt.shop = shop;
+      }
+    }
 
     return NextResponse.json({ prompts, totalPrompts });
   } catch (error) {
