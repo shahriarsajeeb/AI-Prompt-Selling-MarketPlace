@@ -8,14 +8,13 @@ const ReviewCard = ({ item }: { item: any }) => {
   return (
     <div className="flex my-2">
       <div>
-        <Avatar
-          size="lg"
-          src="https://i.pravatar.cc/150?u=a04258114e29026302d"
-        />
+        <Avatar size="lg" src={item?.user?.profileImageUrl} />
       </div>
       <div className="pl-3">
         <div className="flex items-center">
-          <span className={`${styles.label} !text-xl text-white`}>Allen</span>
+          <span className={`${styles.label} !text-xl text-white`}>
+            {item?.user?.firstName + "" + item?.user.lastName!}
+          </span>
           <span className={`${styles.label} pl-3`}>
             {format(item?.createdAt)}
           </span>

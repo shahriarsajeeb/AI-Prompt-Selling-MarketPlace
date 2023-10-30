@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prismaDb";
+import { clerkClient } from "@clerk/nextjs";
 
 export async function GET(req: NextRequest, { params }: { params: any }) {
   try {
@@ -30,6 +31,13 @@ export async function GET(req: NextRequest, { params }: { params: any }) {
         },
       });
       prompt.shop = shop;
+    }
+
+    if (prompt?.reviews) {
+      for (const review of prompt?.reviews) {
+        const user = await clerkClient.users.getUser(review.userId);
+        review.user = user;
+      }
     }
 
     return NextResponse.json(prompt);
