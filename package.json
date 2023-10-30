@@ -1,0 +1,47 @@
+{
+  "name": "prompt-marketplace",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^4.25.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.12",
+    "@mui/x-data-grid": "^6.16.0",
+    "@nextui-org/react": "^2.1.13",
+    "@prisma/client": "^5.3.1",
+    "@stripe/react-stripe-js": "^2.3.1",
+    "@stripe/stripe-js": "^2.1.9",
+    "axios": "^1.5.1",
+    "cloudinary": "^1.41.0",
+    "framer-motion": "^10.16.4",
+    "next": "latest",
+    "next-themes": "^0.2.1",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-fast-marquee": "^1.6.1",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^4.11.0",
+    "stripe": "^14.1.0",
+    "timeago.js": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "autoprefixer": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "postcss": "latest",
+    "prisma": "^5.3.1",
+    "tailwindcss": "latest",
+    "typescript": "latest"
+  }
+}
