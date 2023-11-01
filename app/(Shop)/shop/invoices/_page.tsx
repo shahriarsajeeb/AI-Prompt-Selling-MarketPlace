@@ -1,56 +1,40 @@
 "use client";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
+import { format } from "timeago.js";
 
-type PromptsDataTypes = {
-  id: string;
-  name: string;
-  price: string;
-  rating: number;
-  purchased?: number;
-  orders?: any[];
-  status: string;
-};
-
-const AllPrompts = ({
-  promptsData,
-  isDashboard,
-}: {
-  promptsData: any;
-  isDashboard?: boolean;
-}) => {
+const AllInvoices = ({ invoices }: { invoices: any }) => {
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "name", headerName: "Prompts Title", flex: 0.8 },
-    { field: "price", headerName: "Prompts Price", flex: 0.5 },
-    { field: "rating", headerName: "Ratings", flex: 0.5 },
-    { field: "purchased", headerName: "Purchased", flex: 0.5 },
+    { field: "id", headerName: "ID", flex: 0.3 },
+    { field: "amount", headerName: "Amount", flex: 0.5 },
+    { field: "created_at", headerName: "Created At", flex: 0.5 },
+    { field: "updated_at", headerName: "Updated At", flex: 0.5 },
     {
       field: "status",
-      headerName: "Status",
+      headerName: "Withdraw status",
       flex: 0.5,
     },
   ];
 
-  const rows: Array<PromptsDataTypes> = [];
+  const rows: any = [];
 
-  promptsData?.forEach((item: PromptsDataTypes) => {
-    rows.push({
-      id: item.id,
-      name: item.name,
-      price: "$US" + item.price,
-      rating: item.rating,
-      purchased: item.orders?.length,
-      status: item.status,
+  invoices &&
+    invoices.forEach((invoice: any) => {
+      rows.push({
+        id: invoice?.id,
+        amount: "US$" + invoice?.amount,
+        created_at: format(invoice?.createdAt),
+        updated_at: format(invoice?.updatedAt),
+        status: invoice?.status,
+      });
     });
-  });
 
   return (
     <>
       <Box m="20px">
         <Box
           m="40px 0 0 0"
-          height={isDashboard ? "35vh" : "90vh"}
+          height="90vh"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -103,4 +87,4 @@ const AllPrompts = ({
   );
 };
 
-export default AllPrompts;
+export default AllInvoices;

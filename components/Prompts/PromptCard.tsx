@@ -25,12 +25,28 @@ const PromptCard = ({ prompt }: Props) => {
         />
         <div className="absolute bottom-2 left-2">
           <div className="w-max bg-black hover:bg-[#16252] duration-300 transition-opacity hover:text-black text-white p-[10px] items-center flex rounded-xl">
-            <Image
-              src="https://pixner.net/aikeu/assets/images/category/chat.png"
-              width={25}
-              height={25}
-              alt=""
-            />
+            {prompt?.category === "Chatgpt" ? (
+              <Image
+                src="https://pixner.net/aikeu/assets/images/category/chat.png"
+                width={25}
+                height={25}
+                alt=""
+              />
+            ) : (
+              <>
+                {prompt?.category === "Dalle" ? (
+                  "⛵"
+                ) : (
+                  <>
+                    {prompt?.category === "Midjourney" ? (
+                      "🎨"
+                    ) : (
+                      <>{prompt?.category === "Bard" ? "🐥" : null}</>
+                    )}
+                  </>
+                )}
+              </>
+            )}
             <span className={`${styles.label} pl-2 text-white`}>
               {prompt?.category}
             </span>

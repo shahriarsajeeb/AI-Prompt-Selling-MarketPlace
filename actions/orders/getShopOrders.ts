@@ -12,6 +12,9 @@ export const getShopOrders = async ({ sellerId }: { sellerId: string }) => {
       include: {
         prompt: true,
       },
+      orderBy:{
+        createdAt: 'desc'
+      }
     });
 
     for (const order of orders) {

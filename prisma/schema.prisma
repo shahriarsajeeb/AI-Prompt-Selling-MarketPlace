@@ -8,17 +8,19 @@ datasource db {
 }
 
 model Shops {
-  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  id               String      @id @default(auto()) @map("_id") @db.ObjectId
   name             String
   description      String
   shopProductsType String
   avatar           String
-  ratings          Float    @default(0)
-  totalSales       Int      @default(0)
-  allProducts      Int      @default(0)
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  userId           String   @unique
+  ratings          Float       @default(0)
+  totalSales       Int         @default(0)
+  allProducts      Int         @default(0)
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  userId           String      @unique
+  bank             Banks?
+  withdraws        withdraws[]
 }
 
 model Images {
@@ -84,3 +86,24 @@ model Prompts {
   updatedAt        DateTime      @updatedAt
 }
 
+model Banks {
+  id                  String @id @default(auto()) @map("_id") @db.ObjectId
+  bank_name           String
+  bank_address        String
+  sellerId            String @unique @db.ObjectId
+  bank                Shops  @relation(fields: [sellerId], references: [id])
+  account_holder_name String
+  account_number      Float
+  routing_number      Float
+  swift_code          String
+}
+
+model withdraws {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  sellerId  String   @db.ObjectId
+  shop      Shops    @relation(fields: [sellerId], references: [id])
+  amount    Float
+  status    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

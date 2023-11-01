@@ -29,6 +29,7 @@
     "react-fast-marquee": "^1.6.1",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
+    "recharts": "^2.9.2",
     "stripe": "^14.1.0",
     "timeago.js": "^4.0.2"
   },
@@ -40,7 +41,7 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
-    "prisma": "^5.3.1",
+    "prisma": "^5.5.2",
     "tailwindcss": "latest",
     "typescript": "latest"
   }

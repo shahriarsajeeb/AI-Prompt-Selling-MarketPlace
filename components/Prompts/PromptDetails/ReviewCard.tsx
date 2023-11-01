@@ -1,7 +1,6 @@
 import Ratings from "@/utils/Ratings";
 import { styles } from "@/utils/styles";
 import { Avatar } from "@nextui-org/react";
-import React from "react";
 import { format } from "timeago.js";
 
 const ReviewCard = ({ item }: { item: any }) => {
@@ -13,7 +12,7 @@ const ReviewCard = ({ item }: { item: any }) => {
       <div className="pl-3">
         <div className="flex items-center">
           <span className={`${styles.label} !text-xl text-white`}>
-            {item?.user?.firstName + "" + item?.user.lastName!}
+            {item?.user?.firstName + " " + item?.user.lastName!}
           </span>
           <span className={`${styles.label} pl-3`}>
             {format(item?.createdAt)}

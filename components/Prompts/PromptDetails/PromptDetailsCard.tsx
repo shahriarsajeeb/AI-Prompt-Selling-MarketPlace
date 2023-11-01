@@ -24,6 +24,12 @@ const PromptDetailsCard = ({
 
   const tagsList = tags.split(",").map((tag: string) => tag.trim());
 
+
+  const percentageDifference = ((promptData?.estimatedPrice - promptData?.price) / promptData?.estimatedPrice) * 100;
+
+  const promptDiscount = percentageDifference?.toFixed(0);
+  
+
   return (
     <div className="bg-[#1211023] p-3 w-full min-h-[50vh] shadow rounded-xl mt-8">
       <div className="w-full flex flex-wrap">
@@ -63,7 +69,7 @@ const PromptDetailsCard = ({
             <span
               className={`${styles.label} !text-2xl !text-[#64ff4b] font-Monserrat`}
             >
-              10%
+              {promptDiscount}%
             </span>
           </Chip>
           <span
