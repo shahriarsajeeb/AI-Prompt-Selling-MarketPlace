@@ -1,11 +1,4 @@
-
-## 📋 Table of Contents
-
-1. 🤖 [Introduction](#introduction)
-2. 🚀 [Tech Stack](#tech-stack)
-3. 🤸 [Quick Start](#quick-start)
-
-## 🚨 Tutorial
+## 📋 Tutorial
 
 This GitHub repository hosts the code associated with a comprehensive tutorial featured on our YouTube channel, <a href="https://www.youtube.com/@BecodemyOfficial" target="_blank"><b>Becodemy</b></a>. 
 
@@ -28,7 +21,7 @@ What makes this project even more exciting? It's fully completed and ready for d
 - TypeScript
 
 
-## 🤸 Quick Start
+## 🤸 Getting Started
 
 Follow these steps to set up the project locally on your machine.
 
@@ -61,3 +54,8 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+
+## 🚨 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
